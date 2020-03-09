@@ -1,0 +1,167 @@
+body{
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family:Arial;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    height: 50px;
+    width: 100%;
+    opacity: 0.9;
+}
+
+button:hover {
+    opacity:1;
+}
+
+/* Extra styles for the back to login button */
+.loginbtn {
+    padding: 14px 20px;
+    background-color: #bff4b9;
+}
+
+/* Float login and signup buttons and add an equal width */
+.loginbtn, .signupbtn {
+    float: left;
+    width: 50%;
+}
+
+/* Add padding to container elements */
+.container {
+    padding: 16px;
+}
+
+/* Clear floats */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+    .cancelbtn {
+        width: 100%;
+    }
+}
+.header
+{
+    background: #010937;
+    background-image: url("header_bg.png");
+    background-repeat:no-repeat;
+    background-position:center 0px;
+    background-size:105% 100%;
+    display: block;
+    width:100%;
+    height:158px ;/*8em;*/
+
+}
+
+
+.logo
+{
+    width:260px ;/*10em;	*/
+    z-index:15;
+    margin: 5px auto;
+}
+.profile_title{
+    color: white;
+    height: 10px;
+    margin-top:3px;
+    margin-bottom:1px;
+}
+.content
+{
+    padding-top: 30px;
+    height:100%;
+    margin: 0px 5px 0px 5px;
+    text-align: center;
+}
+
+
+@media screen and (orientation:landscape) {
+    .header{
+        background-size:60% 100%;
+    }
+
+}
+@media screen and (orientation:portrait) {
+    .header{
+        background-size:100% 100%;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .header{
+        background-size:500px 100%;
+
+    }
+}
+@media screen and (min-width: 600px) and (max-width: 1200px) {
+    .header{
+        background-size:500px 100%;
+    }
+
+
+}
+@media screen and (max-width: 600px)  {
+    .header{
+        background-size:250px 80px;
+    }
+    .logo
+    {
+        width:120px ;/*10em;	*/
+        margin: 0px auto;
+    }
+    .header {
+        height: 77px;
+    }
+    #google_translate_element{display:none;
+        visibility:hidden;
+    }
+
+
+}
+@media only screen and (max-width : 420px) {
+    .logo {
+        width: 100px;
+    }
+
+    .rTable {
+        padding: 0 5px 0 0
+    }
+}

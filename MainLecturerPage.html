@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <title>LecturerAttendances</title>
+    <link href="css/Header.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./config.js"></script>
+    <script>
+        function printRows(value, index, array) {
+            //display_txt = display_txt + value.BTAddress + "<br>";
+            var table = document.getElementById("attendanceTable");
+            var row = table.insertRow();
+            var bt_cell = row.insertCell(0);
+            var name1_cell = row.insertCell(1);
+            var name2_cell = row.insertCell(2);
+            var email_cell = row.insertCell(3);
+            bt_cell.innerHTML = value.BTAddress;
+            if (value.First){
+                name1_cell.innerHTML = value.First
+            }
+            if (value.Last){
+                name2_cell.innerHTML = value.Last
+            }
+            if (value.First){
+                email_cell.innerHTML = value.EmailAddress
+            }
+            //cell2.innerHTML = "NEW CELL2";
+        }
+        function getExpAttendance(){
+            var txt = ""
+            var object
+            var url=AttendanceUrl;
+            $.ajax({
+                headers: {
+                    'Accept': 'text/html',
+                },
+                async: false,
+                type: "GET",
+                url: url,
+                success: function (response) {
+                    console.log(response);
+                    txt = response
+                    object = response
+                }
+            });
+            // Just in case the part with Pi does not work
+            //var txt ='{"People": [{"BTAddress": "4E:12:F4:BF:C1:F5"}, {"BTAddress": "7A:98:92:C4:59:38"}, {"BTAddress": "5E:39:0A:E8:0D:2A"}, {"BTAddress": "6A:D0:B1:20:A5:FD"}, {"BTAddress": "5A:9E:87:31:68:49"}, {"BTAddress": "75:24:47:A8:09:35"}, {"BTAddress": "4A:FD:78:82:55:4B"}, {"BTAddress": "45:15:CD:76:48:4E"}, {"BTAddress": "6E:CC:7C:7A:EA:F6"}, {"BTAddress": "5B:91:C0:85:E4:88"}, {"BTAddress": "5D:B7:3E:C6:C9:E0"}, {"BTAddress": "61:45:E6:1B:E3:6D"}, {"BTAddress": "7E:9B:A6:2C:45:8E"}, {"BTAddress": "47:F7:8B:CE:AF:E8"}, {"BTAddress": "59:45:5D:85:AC:3E"}, {"BTAddress": "50:F5:C8:8E:49:06"}, {"BTAddress": "74:57:E8:95:A7:AA"}, {"EmailAddress": "roym@technion.ac.il", "BTAddress": "06:0E:3C:7A:A6:FB", "Last": "Mitrany", "First": "Roy"}, {"BTAddress": "61:21:0D:2A:B0:E5"}, {"EmailAddress": "roym@technion.ac.il", "BTAddress": "76:AE:A0:35:A7:F1", "Last": "Mitrany", "First": "Roy"}, {"BTAddress": "54:BD:79:05:7E:15"}], "SampleingTime": 1583432663}'
+            //var txt = response
+            //object = JSON.parse(txt);
+
+            $("table").empty();
+            $('.greetings').empty();
+            document.getElementById("attendanceHeader").innerText="";
+            document.getElementById("attendanceHeader").style.display="block";
+            document.getElementById("attendanceTable").style.display="table";
+            var ppl_list = object.People
+            if (ppl_list.length) {
+                document.getElementById("attendanceHeader").innerText = "נוכחות ביום ושעה " + object.SampleingTime + "\n";
+                var table = document.getElementById("attendanceTable");
+                var row = table.insertRow();
+                var bt_cell = row.insertCell(0);
+                var name1_cell = row.insertCell(1);
+                var name2_cell = row.insertCell(2);
+                var email_cell = row.insertCell(3);
+                bt_cell.innerHTML = 'Bluetooth Addr';
+                name1_cell.innerHTML = 'First Name';
+                name2_cell.innerHTML = 'Last Name';
+                email_cell.innerHTML = 'E-mail Address';
+                ppl_list.forEach(printRows);
+            }
+        }
+
+       function sampleAttendance() {
+//                    alert("שגיאה- המרצה לא רשום לקורס!");
+
+           //headers.append('Access-Control-Allow-Origin', 'http://localhost:63342');
+           //headers.append('Access-Control-Allow-Credentials', 'true');
+           var url = samplePresenceUrl;
+           $.ajax({
+               headers: {
+                   'Accept': 'application/json,text/html',
+               },
+               async: false,
+               type: "GET",
+               url: url,
+               success: function (response) {
+                   console.log(response);
+               }
+           });
+       }
+    </script>
+
+</head>
+<body>
+<div class="heading"  style="position: fixed">
+    <div class="header">
+        <img src="css/NSSL_AWS.jpg" class="logo" >
+    </div>
+    <div class="btn-group btn-group-justified">
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle" onclick="getExpAttendance()">
+                הצג נוכחות אחרונה</button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Tablet</a></li>
+            </ul>
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle" onclick="sampleAttendance()">
+                בדוק נוכחות ניסוי</button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Tablet</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <h2 id="attendanceHeader" ></h2>
+    <table class="table" id="attendanceTable"  style="display:inline-table"></table>
+</div>
+
+</body>
+</html>

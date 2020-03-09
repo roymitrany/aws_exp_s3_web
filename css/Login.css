@@ -1,0 +1,149 @@
+body{
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family:Arial;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #a27daf;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 15%;
+    border-radius: 5%;
+}
+
+.container {
+    padding: 14px 20px;
+    width: 75%;
+    text-align:center;
+
+}
+
+span.psw {
+    margin: 0 auto;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+    .cancelbtn {
+        width: 100%;
+    }
+}
+.header
+{
+    background: #010937;
+    background-image: url("header_bg.png");
+    background-repeat:no-repeat;
+    background-position:center 0px;
+    background-size:105% 100%;
+    display: block;
+    width:100%;
+    height:158px ;/*8em;*/
+
+}
+
+
+.logo
+{
+    width:260px ;/*10em;	*/
+    z-index:15;
+    margin: 5px auto;
+}
+.profile_title{
+    color: white;
+    height: 10px;
+    margin-top:3px;
+    margin-bottom:1px;
+}
+.content
+{
+    padding-top: 50px;
+    height:100%;
+    margin: 0px 5px 0px 5px;
+    text-align: center;
+}
+
+
+@media screen and (orientation:landscape) {
+    .header{
+        background-size:60% 100%;
+    }
+
+}
+@media screen and (orientation:portrait) {
+    .header{
+        background-size:100% 100%;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .header{
+        background-size:500px 100%;
+
+    }
+}
+@media screen and (min-width: 600px) and (max-width: 1200px) {
+    .header{
+        background-size:500px 100%;
+    }
+
+
+}
+@media screen and (max-width: 600px)  {
+    .header{
+        background-size:250px 80px;
+    }
+    .logo
+    {
+        width:160px ;/*10em;	*/
+        margin: 0px auto;
+    }
+    .header {
+        height: 77px;
+    }
+    #google_translate_element{display:none;
+        visibility:hidden;
+    }
+
+
+}
+@media only screen and (max-width : 420px) {
+    .logo {
+        width: 100px;
+    }
+    .rTable{padding: 0 5px 0 0 }
+}
