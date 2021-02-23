@@ -17,7 +17,6 @@
             var bt_cell = row.insertCell(0);
             var name1_cell = row.insertCell(1);
             var name2_cell = row.insertCell(2);
-            var email_cell = row.insertCell(3);
             bt_cell.innerHTML = value.BTAddress;
             if (value.First){
                 name1_cell.innerHTML = value.First
@@ -25,10 +24,6 @@
             if (value.Last){
                 name2_cell.innerHTML = value.Last
             }
-            if (value.First){
-                email_cell.innerHTML = value.EmailAddress
-            }
-            //cell2.innerHTML = "NEW CELL2";
         }
         function getExpAttendance(){
             var txt = ""
@@ -66,11 +61,9 @@
                 var bt_cell = row.insertCell(0);
                 var name1_cell = row.insertCell(1);
                 var name2_cell = row.insertCell(2);
-                var email_cell = row.insertCell(3);
                 bt_cell.innerHTML = 'Bluetooth Addr';
                 name1_cell.innerHTML = 'First Name';
                 name2_cell.innerHTML = 'Last Name';
-                email_cell.innerHTML = 'E-mail Address';
                 ppl_list.forEach(printRows);
             }
         }
